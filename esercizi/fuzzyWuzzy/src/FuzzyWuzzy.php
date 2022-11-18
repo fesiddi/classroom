@@ -27,15 +27,27 @@ class FuzzyWuzzy
 
     private function whatToSay(int $number): string
     {
-        if ($number % 3 == 0){
-            return "Fuzzy ";
+        if ($number % 105 == 0){ 
+            return 'WuzzyFuzzyFuzzyWuzzy ';
         } 
-        if ($number % 5 == 0) {
-            return "Wuzzy ";
+        if ($number % 35 == 0){ 
+            return 'FuzzyWuzzyWuzzy ';
         }
-        if ($number % 7 == 0) {
-            return "FuzzyWuzzy ";
+        if ($number % 21 == 0) { 
+            return "WuzzyFuzzyWuzzy ";
         }
-        return 'Hello ';
+        if ($number % 15 == 0) { 
+            return "WuzzyFuzzy ";
+        }
+        if ($number % 7 == 0){
+            return 'FuzzyWuzzy ';
+        }
+        if ($number % 5 == 0){
+            return 'Wuzzy ';
+        }
+        if ($number % 3 == 0){
+            return 'Fuzzy ';
+        }
+        return "$number ";
     }
 }

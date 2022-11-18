@@ -8,11 +8,11 @@ use PHPUnit\Framework\TestCase;
 
 class FuzzyWuzzyTest extends TestCase
 {
-    public function testShouldReturnHello(): void
+    public function testShouldReturn2(): void
     {
         $fuzzyWuzzy = new FuzzyWuzzy();
 
-        $this->assertEquals('Hello ', $fuzzyWuzzy->fuzzyGame([2]));
+        $this->assertEquals('2 ', $fuzzyWuzzy->fuzzyGame([2]));
     }
     public function testShouldReturnFuzzy(): void
     {
@@ -36,7 +36,7 @@ class FuzzyWuzzyTest extends TestCase
     {
         $fuzzyWuzzy = new FuzzyWuzzy();
 
-        $this->assertEquals('Hello Fuzzy Fuzzy FuzzyWuzzy ', $fuzzyWuzzy->fuzzyGame([2,3,6,7]));
+        $this->assertEquals('2 Fuzzy Fuzzy FuzzyWuzzy ', $fuzzyWuzzy->fuzzyGame([2,3,6,7]));
     }
     public function testShouldThrowExceptionWithNegativeNumber(): void
     {
@@ -48,7 +48,7 @@ class FuzzyWuzzyTest extends TestCase
     {
         $fuzzyWuzzy = new FuzzyWuzzy();
 
-        $this->assertEquals('Fuzzy ', $fuzzyWuzzy->fuzzyGame([30]));
+        $this->assertEquals('WuzzyFuzzy ', $fuzzyWuzzy->fuzzyGame([30]));
     }
     public function testShouldThrowExceptionWithoutNumbers(): void
     {
@@ -57,5 +57,41 @@ class FuzzyWuzzyTest extends TestCase
         $this->expectErrorMessage('Error! Cannot start the game without numbers!');
         $fuzzyWuzzy->fuzzyGame([]);
 
+    }
+    public function testShouldReturnWuzzyfuzzyFor15asInput(): void
+    {
+        $fuzzyWuzzy = new FuzzyWuzzy();
+
+        $this->assertEquals('WuzzyFuzzy ', $fuzzyWuzzy->fuzzyGame([15]));
+    }
+    public function testShouldReturnWuzzyfuzzywuzzyFor21asInput(): void
+    {
+        $fuzzyWuzzy = new FuzzyWuzzy();
+
+        $this->assertEquals('WuzzyFuzzyWuzzy ', $fuzzyWuzzy->fuzzyGame([21]));
+    }
+    public function testShouldReturnFuzzywuzzywuzzyFor35asInput(): void
+    {
+        $fuzzyWuzzy = new FuzzyWuzzy();
+
+        $this->assertEquals('FuzzyWuzzyWuzzy ', $fuzzyWuzzy->fuzzyGame([35]));
+    }
+    public function testShouldReturnWuzzyfuzzyfuzzywuzzyFor315asInput(): void
+    {
+        $fuzzyWuzzy = new FuzzyWuzzy();
+
+        $this->assertEquals('WuzzyFuzzyFuzzyWuzzy ', $fuzzyWuzzy->fuzzyGame([315]));
+    }
+    public function testShouldReturnWuzzyfuzzyfuzzywuzzyFor567asInput(): void
+    {
+        $fuzzyWuzzy = new FuzzyWuzzy();
+
+        $this->assertEquals('WuzzyFuzzyWuzzy ', $fuzzyWuzzy->fuzzyGame([567]));
+    }
+    public function testShouldReturnCorrectStringForValidSeriesOfNumbers(): void
+    {
+        $fuzzyWuzzy = new FuzzyWuzzy();
+
+        $this->assertEquals('WuzzyFuzzyFuzzyWuzzy 22 WuzzyFuzzy WuzzyFuzzy ', $fuzzyWuzzy->fuzzyGame([735, 22, 45, 90]));
     }
 }
